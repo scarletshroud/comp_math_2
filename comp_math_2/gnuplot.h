@@ -5,11 +5,7 @@
 #include <cstdio>
 #include <iostream>
 
-#ifdef WIN32
-	#define GNUPLOT_NAME "pgnuplot -persist"
-#else
-	#define GNUPLOT_NAME "pgnuplot -persist"
-#endif
+#define GNUPLOT_NAME "gnuplot -persistent"
 
 class Gnuplot
 {

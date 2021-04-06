@@ -2,11 +2,7 @@
 
 Gnuplot::Gnuplot() 
 {
-	#ifdef WIN32
-		gnuplotpipe = _popen(GNUPLOT_NAME, "w");
-	#else
-		gnuplotpipe = popen(GNUPLOT_NAME, "w");
-	#endif
+	gnuplotpipe = _popen(GNUPLOT_NAME, "w");
 
 	if (!gnuplotpipe) 
 	{
@@ -17,13 +13,9 @@ Gnuplot::Gnuplot()
 Gnuplot::~Gnuplot()
 {
 	fprintf(gnuplotpipe, "exit\n");
-
-	#ifdef WIN32
-		_pclose(gnuplotpipe);
-	#else
-		pclose(gnuplotpipe);
-	#endif
+	_pclose(gnuplotpipe);
 }
+
 
 void Gnuplot::operator()(const std::string& command)
 {
