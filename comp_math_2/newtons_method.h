@@ -3,14 +3,12 @@
 
 #include <functional>
 
+#include "answer.h"
+
 class NewtonsMethod
 {
 public:
-	double solve(std::function<double(double)> fun, double x, double n);
-
-private:
-	
-
+	Answer solve(std::function<double(double)> fun, double x, double n);
 };
 
 #endif

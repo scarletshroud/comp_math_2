@@ -3,14 +3,15 @@
 
 #include <functional>
 
+#include "answer.h"
+
 class ChordMethod
 {
 public:
-	double solve(std::function<double(double)> fun, double a, double b, double epsilon);
+	Answer solve(std::function<double(double)> fun, double a, double b, double epsilon);
 
 private:
 	bool isConverges(std::function<double(double)> fun, double a, double b);
-
 };
 
 #endif

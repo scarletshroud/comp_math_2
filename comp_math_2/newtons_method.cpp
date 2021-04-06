@@ -1,6 +1,6 @@
 #include "newtons_method.h"
 
-double NewtonsMethod::solve(std::function<double(double)> fun, double x0, double n)
+Answer NewtonsMethod::solve(std::function<double(double)> fun, double x0, double n)
 {
 	double x = x0;
 	double h = 0.00001;
@@ -8,9 +8,10 @@ double NewtonsMethod::solve(std::function<double(double)> fun, double x0, double
 
 	df = (fun(x + h) - fun(x)) / h; 
 
-	for (size_t i = 1; i <= n; ++i) {
+	for (size_t i = 1; i <= n; ++i) 
+	{
 		x = x - fun(x) / df;
 	}
 
-	return x;
+	return Answer(x, fun(x), n, true);
 }

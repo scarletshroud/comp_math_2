@@ -2,17 +2,20 @@
 
 #include <iostream>
 
-double ChordMethod::solve(std::function<double(double)> fun, double a, double b, double epsilon)
+Answer ChordMethod::solve(std::function<double(double)> fun, double a, double b, double epsilon)
 {
 	if (!isConverges(fun, a, b)) {
 		std::cout << "Chord Method: Incorrect interval.";
-		return -1.0;
+		return Answer(false);
 	}
 
 	double x = 0;
+	size_t k = 0;
 
-	while (abs(fun(b) - fun(a)) > epsilon) 
+	while (fabs(fun(b) - fun(a)) > epsilon) 
 	{
+		k++;
+
 		x = (fun(b) * a - fun(a) * b) / (fun(b) - fun(a));
 
 		if (fun(a) * fun(x) > 0)
@@ -25,7 +28,7 @@ double ChordMethod::solve(std::function<double(double)> fun, double a, double b,
 		}
 	}
 
-	return x;
+	return Answer(x, fun(x), k, true);
 }
 
 bool ChordMethod::isConverges(std::function<double(double)> fun, double a, double b) 
