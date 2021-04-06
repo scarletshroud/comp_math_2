@@ -5,8 +5,10 @@
 
 class ConsoleReader
 {
+
 public:
 	void readInput(double* a, double* b, double* x, double* eps);
+
 };
 
 #endif
