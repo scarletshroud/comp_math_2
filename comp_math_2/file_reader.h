@@ -6,10 +6,8 @@
 
 class FileReader
 {
-
 public:
 	bool readInput(const char* path, double* a, double* b, double* x, double* eps);
-
 };
 
 #endif
